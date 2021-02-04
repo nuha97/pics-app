@@ -6,7 +6,6 @@ import mongoose from 'mongoose';
 const router = express.Router();
 
 export const getMemories = async (req,res)=>{
-    
     try {
         const memoryData = await MemoryModel.find()
         res.status(200).json(memoryData);
@@ -17,7 +16,7 @@ export const getMemories = async (req,res)=>{
 
 export const createMemory = async (req,res)=>{
   const memory = req.body;
-  const newMemory = new MemoryModel(memory)
+  const newMemory = new MemoryModel({...memory, user:req._id , date: new Date().toISOString()})
  // console.log(memory);
   try {
     await newMemory.save();
@@ -57,7 +56,7 @@ export const deleteMemory = async (req, res) => {
 
   await MemoryModel.findByIdAndRemove(id);
 
-  res.json({ message: "Post deleted successfully." });
+  res.json({ message: "Memory deleted successfully." });
 }
 
 // export const likePost = async (req, res) => {

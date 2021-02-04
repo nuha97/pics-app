@@ -14,6 +14,7 @@ const userSchema = mongoose.Schema({
     imageFile: String,
     phone:String,
     id: { type: String },
+    bio: {type: String},
 })
 
 export default mongoose.model('userModel', userSchema);

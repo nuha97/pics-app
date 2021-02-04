@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const memorySchema = mongoose.Schema({
     title: String,
     description: String,
-    // user: String,
+    user: String,
     tags: [String],
     imageFile: String,
     likeCount: {
